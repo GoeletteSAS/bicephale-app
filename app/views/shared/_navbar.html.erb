@@ -1,0 +1,39 @@
+<nav class="navbar navbar-expand-lg d-flex nav-background">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <a class="navbar-brand m-0" href="<%= root_path %>">
+        <%= image_tag("https://static.vecteezy.com/system/resources/thumbnails/018/926/145/small_2x/abstract-color-logo-element-png.png", alt: "Logo", width: "40px") %>
+      </a>
+      <ul class="navbar-nav mx-auto mb-lg-0 gap-4">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Services</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">FAQ</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Prendre RDV</a>
+        </li>
+      </ul>
+
+      <% if user_signed_in? %>
+        <%= link_to "Mon tableau de bord", dashboard_searches_path, class: "secondary-cta" %>
+        <%#= link_to "Se déconnecter", destroy_user_session_path, data: { turbo_method: :delete} %>
+        <%= link_to "Se déconnecter", destroy_user_session_path, data: { "turbo-method": :delete }, class: "secondary-cta" %>
+      <% else %>
+        <%= link_to "Créer un compte", new_user_registration_path, class: "secondary-cta" %>
+        <%= link_to "Se connecter", new_user_session_path, class: "secondary-cta" %>
+      <% end %>
+
+    </div>
+  </div>
+</nav>

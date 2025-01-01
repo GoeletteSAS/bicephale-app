@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg d-flex align-items-center">
+  <div class="container-fluid">
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+
+    <div class="navbar" id="navbarContent">
+      <div class="d-flex">
+        <a class="navbar-brand m-0" href="<%= root_path %>">
+            <%= image_tag("", alt: "Logo", width: "150px") %>
+        </a>
+        <h1>En route vers le temps partiel!</h1>
+      </div>
+      <%= link_to "Login", new_login_path,
+                  class: "btn rounded-pill" %>
+
+
+    </div>
+  </div>
+</nav>

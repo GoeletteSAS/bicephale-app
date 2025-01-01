@@ -1,0 +1,140 @@
+.chatroom-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.chatroom-info {
+  display: flex;
+  padding: 0.4rem;
+  border: 0.5px solid $white-primary;
+  border-radius: 4px;
+  background-color: white;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.2rem;
+}
+
+.chatroom-info:hover {
+  background-color: $gray-secondary;
+  box-shadow: inset 2px 2px 0px $light-shadow-secondary;
+  color: white;
+}
+
+.chatroom-info.active {
+  background-color: $gray-secondary;
+  box-shadow: inset 2px 2px 0px $light-shadow-secondary;
+  color: white;
+}
+
+.chatroom-info-without-chevron {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.4rem;
+}
+
+.name-and-notif {
+  display: flex;
+  flex-direction: column;
+}
+
+.chatroom-header {
+  padding: 1rem;
+  border-bottom: 1px solid #eee;
+
+  .back-link {
+    margin-right: 1rem;
+    color: #666;
+  }
+}
+
+.messages {
+  flex-grow: 1;
+  overflow-y: auto;
+  min-height: 0;
+}
+
+.message-wrapper {
+  margin-bottom: 1rem;
+  display: flex;
+  width: 100%;
+  padding: 0 1rem;
+
+  &.message-sent {
+    justify-content: flex-end;
+
+    .message {
+      background-color: $gray-secondary;
+      color: white;
+      max-width: 50%;
+    }
+  }
+
+  &.message-received {
+    justify-content: flex-start;
+
+    .message {
+      background-color: white;
+      max-width: 50%;
+    }
+  }
+}
+
+.message {
+  padding: 1rem;
+  border-radius: 1rem;
+
+  .message-metadata {
+    font-size: 0.8rem;
+    color: darkgray;
+    margin-top: 0.25rem;
+  }
+}
+
+.message-form {
+  background-color: white;
+  display: flex;
+  position: sticky;
+  bottom: 0;
+  z-index: 1;
+
+  .message_content {
+    margin-bottom: 0 !important; // This will override the mb-3
+  }
+  .text.required.message_content {
+    margin-bottom: 0 !important;
+  }
+}
+
+.card {
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.nav-tabs .nav-link {
+  color: #495057;
+}
+
+.nav-tabs .nav-link i {
+  margin-right: 5px;
+}
+
+.chatrooms-list {
+  border-right: 1px solid #dee2e6;
+  height: calc(100vh - 200px);
+  padding-inline: 0;
+}
+
+.chatroom-preview {
+  border-bottom: 1px solid #dee2e6;
+  transition: background-color 0.2s;
+}
+
+.chatroom-preview:hover {
+  background-color: #f8f9fa;
+}
+.chat {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}

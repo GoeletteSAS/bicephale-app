@@ -1,0 +1,31 @@
+<div class="d-flex justify-content-evenly align-items-center">
+
+
+  <div class="container-questions flex-item">
+    <%= simple_form_for @search do |f| %>
+      <div class="column">
+            <%= f.input :line_of_work, label: "Quelle est votre ligne de métier ?", input_html: { class: 'form-control' }, collection: @lines_of_work, required: true %>
+            <%= f.input :field, label: "Quel est votre secteur d'activité ?", input_html: { class: 'form-control' }, collection: @fields, required: true %>
+            <%= f.input :address,
+                          label: "Où souhaitez-vous chercher ?",
+                          input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                          wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_ACCESS_TOKEN"]}}%>
+                          
+          <%= f.input :quotite_de_travail, label: "Combien de temps souhaitez-vous travailler ? (en %)", input_html: { class: 'form-control', type: 'number', min: 0, max: 100, step: 10 } %>
+
+        <div class="text-center mt-4">
+          <%= f.submit 'Lancer ma recherche', id: 'bright', class: 'btn btn-primary btn-lg px-4' %>
+        </div>
+
+        <%= f.input :is_offering, as: :hidden %>
+        <%= f.input :experience_id, as: :hidden %>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class="flex-item">
+    <%= image_tag "image-search.png", alt: "Recherche", width: 200 %>
+  </div>
+
+</div>

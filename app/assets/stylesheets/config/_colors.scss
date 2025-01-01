@@ -1,0 +1,120 @@
+// Define variables for your color scheme
+
+// secondary colors:
+
+$red: #ba3032;
+$orange: #E67E22;
+$yellow: #FFE367;
+
+
+
+// shades :
+
+$very-very-light-green : #daefe6;
+
+$very-light-green :      #a8eacc;
+$light-green :           #3bdc93;
+$mid-green:              #21cb7f;
+$dark-green:             #20b974;
+
+$very-light-gray:       #f5f5f5;
+$light-gray:            #e8e8e8;
+$mid-gray:              #AFADAD;
+$dark-gray:             #555555;
+
+$very-light-beige:      rgb(247, 245, 241);
+$light-beige:           rgb(242, 238, 233);
+$mid-beige:             #dbc495;
+$dark-beige:            #c1a56f;
+
+$white-purple:          rgb(248, 249, 250);
+$very-light-purple:     rgb(241, 237, 241);
+$light-purple:          rgb(173, 112, 145);
+$mid-purple:            rgb(123, 60, 94);
+$dark-purple:           rgb(102, 37, 73);
+$black-purple:          rgb(26, 2, 15);
+
+
+$very-light-blue:       rgb(190, 228, 242);
+$light-blue:            rgb(117, 185, 213);
+$mid-blue:              rgb(33, 149, 199);
+$dark-blue:             rgb(56, 124, 149);
+$black-blue:            rgb(11, 26, 32);
+$shadow-blue:           rgba(11,26,32,0.2);
+$light-shadow-blue:     rgba(11,26,32,0.08);
+
+
+// Main colors:
+
+$white-primary:         $white-purple;
+$light-gray-primary:    $light-purple;
+$gray-primary:          $mid-purple;
+$dark-gray-primary:     $dark-purple;
+$black-primary:         $black-purple;
+
+$box-shadow-primary:     rgba(26, 2, 15, 0.8);
+$mid-shadow-primary:     rgba(26, 2, 15, 0.5);
+$light-shadow-primary:   rgba(26, 2, 15, 0.1);
+
+$background-primary:    $white-primary;
+
+// secondary colors:
+
+
+$white-secondary :      rgb(231, 241, 242);
+$light-gray-secondary:  rgb(72, 130, 134);
+$gray-secondary:        rgb(48, 82, 82);
+$dark-gray-secondary:   rgb(27, 46, 46);
+$black-secondary :      rgb(8, 13, 13);
+
+$box-shadow-secondary:  rgba(8, 13, 13, 0.8);
+$light-shadow-secondary:  rgba(8, 13, 13, 0.2);
+
+
+// background colors:
+
+$background-white:      $very-light-beige;
+$background-light-gray: $light-beige;
+$background-gray:       $light-beige;
+$background-dark:       $mid-beige;
+$background-black:      $dark-beige;
+
+
+
+
+
+
+
+
+
+
+// pour mémoire
+
+
+$memory-h1: #2c3e50;
+
+$very-light-green : #a8eacc;
+$light-green : #3bdc93;
+$mid-green: #21cb7f;
+$dark-green: #20b974;
+
+$very-light-gray: #f5f5f5;
+$light-gray: #e8e8e8;
+$mid-gray: #AFADAD;
+$dark-gray: #555555;
+
+$very-light-beige: #f0eeea;
+$light-beige: #f1eade;
+$mid-beige: #dbc495;
+$dark-beige: #c1a56f;
+
+$very-light-purple: #e5d0ea;
+$light-purple: #b77ac5;
+$mid-purple: #8c0fa8;
+$dark-purple: #4c0b5f;
+
+$very-light-blue: #bee4f2;
+$light-blue: #75b9d5;
+$mid-blue: #2295c6;
+$dark-blue: #387c95;
+$title-blue: #5c6ac4;

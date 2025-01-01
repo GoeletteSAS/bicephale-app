@@ -1,0 +1,118 @@
+.round-button {
+  background-image: asset-url("https://www.iconpacks.net/icons/2/free-plus-icon-3107-thumb.png");
+  color: $black-primary;
+  font-weight: bold;
+  text-shadow: $light-shadow-secondary 1px 0 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: $dark-gray-secondary;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 16px;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $black-secondary;
+  }
+}
+
+.devise-btn {
+  margin-top : 8px;
+  margin-bottom: 16px;
+  border-style: 1px solid;
+  border-radius: 8px;
+  background-color: $gray-secondary;
+  color: $white-secondary;
+
+  &:hover {
+    margin-top : 8px;
+    margin-bottom: 16px;
+    border-style: 1px solid;
+    border-radius: 8px;
+    background-color: $gray-secondary;
+    color: $white-secondary;
+    opacity: 88%;
+    transform: translateY(-1.5px);
+  }
+}
+
+
+.main-cta-home {
+  font-size: 24px;
+  color: $white-secondary;
+  border-radius: 43px;
+  padding-inline: 1.5rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+  background-color: $gray-secondary;
+  transition: 0.2s ease;
+  text-shadow: 0px 1px 3px $light-shadow-secondary;
+  box-shadow: 0px 3px 5px $light-shadow-secondary;
+}
+
+
+.main-cta-home:hover {
+  transform: translateY(-1.5px);
+  opacity: 88%;
+  box-shadow: 2px 3px 1px $box-shadow-secondary;
+}
+
+.main-cta-home:active {
+  transform: translateY(1.5px);
+  box-shadow: 2px 3px 0px $box-shadow-secondary;
+}
+
+.secondary-cta {
+  font-size: 1rem;
+  color: $white-secondary;
+  text-shadow: 0 0px 1px $light-shadow-secondary;
+  border-radius: var(--bs-border-radius-pill);
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  background-color: $gray-secondary;
+  text-shadow: -1px 2px 4px $light-shadow-secondary;
+  transition: 0.2s ease;
+  text-align: center;
+  vertical-align: middle;
+  margin-inline: 5px;
+}
+
+
+.secondary-cta:hover {
+  transform: translateY(-1.5px);
+  opacity: 88%;
+  box-shadow: 2px 3px 1px $box-shadow-secondary;
+}
+.secondary-cta:active {
+  transform: translateY(1.5px);
+  box-shadow: 2px 3px 0px $box-shadow-secondary;
+}
+
+.round-cta {
+  font-size: 1rem;
+  color: $gray-secondary;
+  text-shadow: 0 0px 1px $light-shadow-secondary;
+  background-color: transparent;
+  text-shadow: -1px 2px 4px $light-shadow-secondary;
+  transition: 0.2s ease;
+  text-align: center;
+  vertical-align: bottom;
+  border: none;
+  scale: 2;
+  border-radius: 50%;
+}
+
+.round-cta:hover {
+  transform: translateY(-1.5px);
+  opacity: 88%;
+}
+
+.round-cta:active {
+  transform: translateY(1.5px);
+  opacity: 100%;
+}

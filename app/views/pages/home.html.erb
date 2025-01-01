@@ -1,0 +1,55 @@
+<%# <h1>Pages#home</h1> %>
+<%# <p>Find me in app/views/pages/home.html.erb</p> %>
+<div class="home-background-1 home-container">
+
+  <%# div with title, picture and CTA %>
+
+  <div class="home-with-pic">
+    <div class="home-header-and-CTA">
+        <h1><span>Passez à temps partiel. <br/></span> Grâce au jobsharing</h1>
+        <% if user_signed_in? %>
+          <%= link_to "Je cherche un binôme", init_searches_path,
+                      class: "main-cta-home" %>
+        <% else %>
+          <%= link_to "Je cherche un binôme", new_user_registration_path,
+                      class: "main-cta-home" %>
+        <% end %>
+    </div>
+
+    <%# div with home picture %>
+
+    <div>
+      <%= image_tag "Allura - Feedback Session.png", alt: "two-women-jobsharing", height: 350 %>
+    </div>
+  </div>
+  <%# display-flex with 3 marketing promesses %>
+  <div id="promess">
+    <div class="mini-card-home">
+      <h2>Flexibilité</h2>
+      <p>Choisissez <br/>votre temps de travail</p>
+    </div>
+    <div class="mini-card-home">
+      <h2>Equilibre</h2>
+      <p>Gardez du temps <br/>pour vos projets personnels</p>
+    </div>
+    <div class="mini-card-home">
+      <h2>Performance</h2>
+      <p>Epanouissez-vous <br/>sans compromis dans votre carrière</p>
+    </div>
+  </div>
+
+  <%# div with call to action scroll down %>
+  <div class="scroll-down">
+    <i class="fa-solid fa-chevron-down"></i>
+  </div>
+</div>
+
+<%# page d'information %>
+
+<div class="home-background-2 home-left-spacing" id="home-section-2">
+<div class="col steps-to-jobsharing">
+<div class="row cards-steps-to-jobsharing">
+
+</div>
+</div>
+</div>

@@ -1,0 +1,44 @@
+.navbar-lewagon {
+  justify-content: space-between;
+  background: $white-primary;
+  color: $dark-gray-secondary;
+  max-height: 9vh;
+}
+
+.navbar-lewagon .navbar-collapse {
+  flex-grow: 0;
+}
+
+.navbar-lewagon .navbar-brand img {
+  width: 40px;
+}
+
+.nav-background {
+  padding-left: 16px;
+}
+
+.nav-item {
+  color : $gray-primary;
+  border-radius: 4px;
+}
+
+.nav-item:hover {
+  box-shadow: 2px 2px 2px 2px $mid-shadow-primary;
+}
+// .navbar-custom {
+//   background-color: rgb(241, 234, 222);
+//   display: flex;
+//   padding-left: 80px;
+//   flex-direction: row;
+//   flex-wrap: nowrap;
+//   align-content: normal;
+//   justify-content: flex-start;
+//   align-items: center;
+// }
+
+// @media (min-width: 992px) {
+//   .navbar-expand-lg {
+//       flex-wrap: nowrap;
+//       justify-content: flex-start;
+//   }
+// }

@@ -1,0 +1,60 @@
+<div class="dashboard-container">
+  <div><%= render "tabs" %></div>
+<div class="container-fluid">
+  <div class="card">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link" href="dashboard_chatrooms"><i class="fas fa-inbox"></i> Inbox</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"><i class="fas fa-search"></i> cherchez un message</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" href="#"><i class="fas fa-envelope"></i> Messages non lus - <%= @number%></a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <!-- Chatrooms List Column -->
+        <div class="col-md-3 chatrooms-list">
+          <h4>Votre messagerie</h4>
+          <ul class="list-group">
+            <% if @chatrooms.present? %>
+              <% @chatrooms.each do |chatroom| %>
+              <% if chatroom.messages.where(sender: chatroom.other_user(current_user), reading: false).count > 0%>
+                <%= link_to chatroom_path(chatroom), data: { turbo_frame: "chatroom_content" } do %>
+                  <div class="chatroom-preview">
+                    <div class="avatar">
+                      <%= image_tag "", class: "img-thumbnail" %>
+                    </div>
+                    <div class="chatroom-info">
+                      <h5><%= chatroom.other_user(current_user).first_name %> <%= chatroom.other_user(current_user).last_name %></h5>
+                      <% if chatroom.messages.any? %>
+                      <%= turbo_stream_from [chatroom, current_user] %>
+                        <div class="badge rounded-pill text-bg-info">Unread : <%= chatroom.messages.where(sender: chatroom.other_user(current_user), reading: false).count %></div>
+                        <p class="last-message">
+                          <%= chatroom.messages.last.content.truncate(50) %>
+                        </p>
+                        <small><%= time_ago_in_words(chatroom.messages.last.created_at) %> ago</small>
+                      <% end %>
+                    </div>
+                  </div>
+                <% end %>
+              <% end %>
+              <% end %>
+            <% else %>
+              <li class="list-group-item">No chatroom available</li>
+            <% end %>
+          </ul>
+        </div>
+
+        <!-- Message Exchanges Column -->
+        <div class="col-md-9">
+          <%= turbo_frame_tag "chatroom_content" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

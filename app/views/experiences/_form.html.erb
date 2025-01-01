@@ -1,0 +1,33 @@
+<div class="container-profile-exp">
+  
+  <h2 class="text-center">Ajouter une expérience</h1>
+
+  <%= simple_form_for @experience do |f| %>
+
+    <%= f.input :start_date,
+                as: :string,
+                label: "Date de début",
+                input_html: { data: { controller: "datepicker" } } %>
+
+    <%= f.input :end_date,
+                as: :string,
+                label: "Date de fin",
+                input_html: { data: { controller: "datepicker" } } %>
+
+    <%= f.input :is_current, label: 'Est-ce votre poste actuel ?', input_html: { class: 'form-check-input' } %>
+
+    <%= f.input :line_of_work, label: 'Ligne de métier', input_html: { class: 'form-control' }, collection: @lines_of_work, prompt: 'Sélectionnez une ligne de métier', required: true %>
+
+    <%= f.input :field, label: "Secteur d'activité", input_html: { class: 'form-control' }, collection: @fields, prompt: "Sélectionnez un secteur d'activité", required: true %>
+
+    <%= f.input :address,
+                  label: "Adresse",
+                  input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+                  wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value: ENV["MAPBOX_ACCESS_TOKEN"]}}%>
+
+    <div class="text-center mt-3">
+      <%= f.button :submit, 'Créer l\'expérience', class: 'btn btn-primary' %>
+      <%= link_to 'Retour', experiences_path, class: 'btn btn-secondary' %>
+    </div>
+  <% end %>
+</div>

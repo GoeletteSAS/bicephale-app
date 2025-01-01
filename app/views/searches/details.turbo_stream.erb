@@ -1,0 +1,3 @@
+<%= turbo_stream.update('results') do %>
+  <%= render partial: 'details_card', locals: { user: @user, search: @search } %>
+<% end %>

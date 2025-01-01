@@ -1,0 +1,27 @@
+<div class="d-flex justify-content-center align-items-center" style="min-height: 80vh;">
+
+  <div class="container-questions flex-item">
+
+    <%= simple_form_for @search, url: new_search_path, method: :get do |f| %>
+
+      <div data-controller="search-auto-fill", data-action="input->search-auto-fill#display">
+          <%= f.input :is_offering, wrapper_html: { class: 'init-option' },
+                      as: :select,
+                      collection: [["Je partage mon poste.",true], ["Je cherche une personne ayant déjà un poste.",false]],
+                      required: true,
+                      as: :radio_buttons,
+                      label: "Quelle est votre situation ?"%>
+      </div>
+
+      <div class="text-center">
+        <%= f.submit'Lancer ma recherche', class: "btn btn-primary text-center" %>
+      </div>
+    <% end %>
+
+  </div>
+
+  <div class="flex-item">
+    <%= image_tag "image-init.png", alt: "Bicephale", width: 500 %>
+  </div>
+
+</div>

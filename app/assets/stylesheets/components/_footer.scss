@@ -1,0 +1,24 @@
+footer {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  width: 100%;
+  min-height: 500px;
+}
+
+footer div {
+
+  display: flex;
+  justify-content: space-between;
+}
+
+footer div a {
+  text-decoration: none;
+  text-overflow: none;
+  color: $black-primary;
+}
+
+.margin_right {
+  display: flex;
+  margin-right: 10px;
+}

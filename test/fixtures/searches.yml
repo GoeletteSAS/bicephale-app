@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  line_of_work: MyString
+  field: MyString
+  address: MyString
+  is_offering: false
+  experience: one
+
+two:
+  user: two
+  line_of_work: MyString
+  field: MyString
+  address: MyString
+  is_offering: false
+  experience: two

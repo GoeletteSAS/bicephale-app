@@ -1,0 +1,72 @@
+<div class="dashboard-container" data-controller="active-chat" >
+  <div><%= render "tabs" %></div>
+  <div class="container-fluid">
+    <div class="card">
+      <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs">
+          <li class="nav-item">
+            <a class="nav-link active" href="#"><i class="fas fa-inbox"></i> Inbox</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"><i class="fas fa-search"></i> Search messages</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="dashboard_chatrooms_unread"><i class="fas fa-envelope"></i> Unread - <%= @number%></a>
+          </li>
+        </ul>
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <!-- Chatrooms List Column -->
+          <div class="col-md-3 chatrooms-list">
+            <h4>Les nouveaux messages</h4>
+            <ul class="list-group">
+              <% if @chatrooms.present? %>
+                <div class="chatroom-preview">
+                  <% @chatrooms.each do |chatroom| %>
+                    <%= link_to chatroom_path(chatroom), data: { turbo_frame: "chatroom_content" } do %>
+                      <div class="chatroom-info" data-action="click->active-chat#highlight" data-active-chat-target="info">
+                        <div class="chatroom-info-without-chevron">
+                          <div class="avatar">
+                            <% if chatroom.other_user(current_user).photo.attached? %>
+                              <%= cl_image_tag chatroom.other_user(current_user).photo.key, crop: :fill, class: "avatar" %>
+                            <% else %>
+                              <%= image_tag "default-user.svg", crop: :fill, alt: "default-profile-photo"%>
+                            <% end %>
+                          </div>
+                          <div class="name-and-notif">
+                            <h5><%= chatroom.other_user(current_user).first_name %> <%= chatroom.other_user(current_user).last_name %></h5>
+                            <% if chatroom.messages.where(sender: chatroom.other_user(current_user), reading: false).count > 0 %>
+                              <%= turbo_stream_from [chatroom, current_user] %>
+                                <div class="badge rounded-pill text-bg-info">
+                                  <% if chatroom.messages.where(sender: chatroom.other_user(current_user), reading: false).count == 1 %>
+                                    <p>1 message non lu</p>
+                                  <% else %>
+                                    <p><%= chatroom.messages.where(sender: chatroom.other_user(current_user), reading: false).count %> messages non lus</p>
+                                  <% end %>
+                                </div>
+                              <%# <p class="last-message"></p>
+                              <%= chatroom.messages.last.content.truncate(7) %>
+                              <%# <small> ago</small> %>
+                            <% end %>
+                          </div>
+                        </div>
+                        <h3><i class="fa-solid fa-chevron-right"></i></h3>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% else %>
+                <li class="list-group-item">No chatrooms available</li>
+              <% end %>
+            </ul>
+          </div>
+          <!-- Message Exchanges Column -->
+          <div class="col-md-9">
+            <%= turbo_frame_tag "chatroom_content" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

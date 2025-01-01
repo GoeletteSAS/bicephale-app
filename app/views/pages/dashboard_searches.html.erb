@@ -1,0 +1,55 @@
+<div class="dashboard-container">
+  <div><%= render "tabs" %></div>
+
+  <div class="searches-results">
+    <div class="searches-container">
+      <% @searches.each do |search| %>
+        <%= link_to search_path(search), data: { turbo_frame: "preview" } do %>
+          <% if search.is_offering? %>
+            <div class="search-card">
+              <div class="header-searches-invite">
+                <h3>Partager mon poste</h3>
+                <h3><i class="fa-solid fa-chevron-right"></i></h3>
+              </div>
+              <div class="search-card-content">
+                <div class="content-item">
+                  <div class="line-of-work"><%= search.line_of_work.capitalize %></div>
+                  <div class="adress"><%= search.address %></div>
+                  </div>
+                <div class="div-time-share-invite">40%</div>
+              </div>
+            </div>
+          <% else %>
+            <div class="search-card">
+              <div class="header-searches-join">
+                <h3>Rejoindre un poste</h3>
+                <h3><i class="fa-solid fa-chevron-right"></i></h3>
+              </div>
+              <div class="search-card-content">
+                <div class="content-item">
+                  <div class="line-of-work"><%= search.line_of_work.capitalize %></div>
+                  <div class="adress"><%= search.address %></div>
+                </div>
+                <div class="div-time-share-join">40%</div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="results" id="results">
+      <%= turbo_frame_tag "preview" %>
+    </div>
+  </div>
+  <div class="details">
+    <%= turbo_frame_tag "details" %>
+  </div>
+
+  <% if current_user.searches.nil?%>
+    <div class="cards">
+      <h1>Aucun recherche ici</h1>
+    </div>
+  <%else%>
+    <%#= render "cards_jobsearch" %>
+  <% end %>
+</div>

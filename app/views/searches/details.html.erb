@@ -1,0 +1,88 @@
+<%= turbo_frame_tag "details" do %>
+  <div class="profile-detail-card">
+
+    <div class="profile-details-header">
+      <div class="big-photo-and-name">
+        <!-- photo of the contact -->
+        <% if @user.photo.attached? %>
+          <div class="card-detail-profile">
+            <%= cl_image_tag @user.photo.key, crop: :fill, class: "img-fluid avatar" %>
+          </div>
+        <% end %>
+        <!-- name of the contact -->
+        <div><h2><%= @user.first_name %> <%= @user.last_name %></h2></div>
+      </div>
+        <!-- boutons actionsvers favoris, message et fermer -->
+      <div class="boutons-icons">
+        <button type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#newChatroomModal-<%= @user.id %>">
+          <i class="fa-regular fa-message"></i>
+        </button>
+        <% if current_user.favorites.exists?(user_2_id: @user.id) %>
+          <!-- Si l'utilisateur a déjà favorisé ce profil, on affiche l'étoile pleine -->
+          <%= button_to favorites_path(user_2_id: @user.id), method: :post, data: {turbo: false} do %>
+          <i class="fa-solid fa-star text-warning"></i>
+          <!-- L'étoile pleine si déjà favori -->
+          <% end %>
+        <% else %>
+          <!-- Si l'utilisateur n'a pas encore favorisé ce profil, on affiche l'étoile vide -->
+          <%= button_to favorites_path(user_2_id: @user.id), method: :post, data: {turbo: false} do%>
+          <i class="fa-regular fa-star"></i>
+          <!-- L'étoile vide si non favori -->
+          <% end %>
+        <% end %>
+        <%= link_to search_path(@search), data: { turbo_frame: "preview" } do %>
+          <i class="fa-solid fa-x"></i>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="profile-details-body">
+      <div class="name-and-mail">
+        <h3 class="profile-name"><%= @user.first_name %> <%= @user.last_name %></h3>
+        <div class="mail-and-pic">
+          <div>
+            <i class="fas fa-envelope"></i>
+          </div>
+          <div>
+            <p class="profile-email">
+            <% if @user.email.length > 20 %>
+              <% regex_after_arobase = /@.*$/%>
+              <% if @user.email.match(regex_after_arobase)[0].length > 12%>
+                <% regex_twelve_letters = /.{15}/%>
+                <% twelve_letters = @user.email.match(regex_twelve_letters)[0] %>
+                <%= twelve_letters%>...
+              <% else%>
+                <%first_letter_email = /^./%>
+                <%= @user.email.match(first_letter_email)[0]%>...<%=@user.email.match(regex_after_arobase)[0] %>
+              <% end %>
+            <% else%>
+              <%= @user.email%>
+            <% end%>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="separator"></div>
+        <div class="profile-details-experiences">
+          <% @user.experiences.where(line_of_work: @search.line_of_work, field: @search.field).each do |experience| %>
+            <div class="profile-details-experiences-cards">
+              <div class="profile-details-experience-item">
+                <i class="fas fa-briefcase"></i>
+                <p><strong>Entreprise</strong> <%= experience.firm %></p>
+              </div>
+              <div class="profile-details-experience-item">
+                <i class="fas fa-industry"></i>
+                <p><strong>Poste: </strong><%= experience.postname %></p>
+              </div>
+              <div class="profile-details-experience-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <p><strong>Lieu:</strong> <%= experience.address %></p>
+              </div>
+            </div>
+          <% end %>
+        </div>
+    </div>
+  </div>
+<% end %>

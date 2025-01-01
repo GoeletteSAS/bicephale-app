@@ -1,0 +1,86 @@
+.home-background-1 {
+  background: linear-gradient($background-light-gray, $background-white);
+}
+
+.home-background-2 {
+  background: linear-gradient($background-white, $background-light-gray);
+}
+
+.background-color-body {
+  background: linear-gradient(135deg, $background-light-gray 20%, $background-white 94%);
+}
+
+.home-container {
+  padding: 9vh 5vw 0vh 5vw;
+  max-height: 91vh;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: inherit;
+}
+
+.home-header-and-CTA {
+  display: flex;
+  flex-direction: column;
+  justify-content:flex-start;
+  gap: 3rem;
+  align-items: flex-start;
+}
+
+.home-with-pic {
+  display: flex;
+  justify-content: space-between;
+  height: 60vh;
+}
+
+.home-with-pic img{
+  align-items: end;
+  box-sizing: border-box;
+}
+
+.home-with-pic span {
+  color: $black-primary;
+}
+
+.mini-card-home {
+  width: 16rem;
+  text-align: -webkit-center;
+  color: $dark-gray-primary;
+  align-items: center;
+}
+
+#promess {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  text-shadow: -1px 2px 4px $light-shadow-primary;
+  min-height:  18vh;
+}
+
+#promess h2 {
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -1px;
+}
+
+#promess p {
+  letter-spacing: -1px;
+}
+
+
+.scroll-down {
+  text-align: center;
+  max-height: 5vh;
+}
+
+.steps-to-jobsharing {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards-steps-to-jobsharing {
+  border: 0.2px solid $dark-gray-secondary;
+  border-radius: 4px;
+  box-shadow: 0px 1px $light-shadow-secondary;
+}

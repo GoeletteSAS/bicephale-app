@@ -1,0 +1,36 @@
+<div class="dashboard-container">
+  <div><%= render "tabs" %></div>
+
+<div class="d-flex justify-content-evenly">
+
+  <div class="flex-item container-profile-exp">
+  <h2 class="text-center">Mes expériences</h2>
+    <%if current_user.experiences.any?%>
+      <% current_user.experiences.each do |experience| %>
+        <div class="exp">
+          <% if experience.is_current%>
+            <h4>Poste actuel</h4>
+            <p>Depuis <%= experience.start_date %></p>
+          <% else %>
+            <h4>Expérience passée</h4>
+            <p>De <%= experience.start_date %> à <%= experience.end_date %></p>
+          <% end %>
+            <p><strong>Métier :</strong> <%= experience.line_of_work %></p>
+            <p><strong>Secteur :</strong> <%= experience.field %></p>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="flex-item">
+      <section class="profile-content">
+        <%= render "experiences/form", experience: @experience %>
+      </section>
+    </div>
+
+  </div>
+
+<% else %>
+  <section class="profile-content">
+    <%= render "experiences/form", experience: @experience %>
+  </section>
+<% end %>
