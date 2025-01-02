@@ -4,13 +4,13 @@ class PagesController < ApplicationController
   end
 
   def notifications_messages
-    @chatrooms = current_user.chatrooms
-    if @chatrooms.nil?
+    @binomes = current_user.binomes
+    if @binomes.nil?
       @number = 0
     else
       @number = 0
-      @chatrooms.each do |chatroom|
-      @number += chatroom.messages.where(sender: chatroom.other_user(current_user), reading: false).count
+      @binomes.each do |binome|
+      @number += binome.messages.where(sender: binome.other_user(current_user), reading: false).count
       end
     end
   end
@@ -35,11 +35,11 @@ class PagesController < ApplicationController
     notifications_messages()
   end
 
-  def dashboard_chatrooms
-    notifications_messages()
+  def dashboard_binomes
+      notifications_messages()
   end
 
-  def dashboard_chatrooms_unread
+  def dashboard_binomes_unread
     notifications_messages()
   end
 end

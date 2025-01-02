@@ -18,7 +18,7 @@ export default class extends Controller {
     }).then(response => {
       if (response.ok) {
         form.reset()  // Réinitialise le formulaire après succès
-        const modal = bootstrap.Modal.getInstance(document.getElementById('newChatroomModal'))
+        const modal = bootstrap.Modal.getInstance(document.getElementById('newBinomeModal'))
         modal.hide()  // Ferme le modal
       } else {
         // Gestion des erreurs ici si besoin

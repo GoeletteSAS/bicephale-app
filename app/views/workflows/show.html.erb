@@ -1,0 +1,15 @@
+<h1>Workflow Details</h1>
+
+<p>Create Workspace: <%= @workflow.create_workspace %></p>
+<p>First Quiz Done: <%= @workflow.first_quizz_done %></p>
+<p>Second Quiz Done: <%= @workflow.second_quizz_done %></p>
+<p>Third Quiz Done: <%= @workflow.third_quizz_done %></p>
+<p>Real Meeting Done: <%= @workflow.real_meeting_done %></p>
+<p>Company Validation: <%= @workflow.company_validation %></p>
+
+<h2>Associated Coachings</h2>
+<ul>
+  <% @coachings.each do |coaching| %>
+    <li><%= coaching.name %> (ID: <%= coaching.id %>)</li>
+  <% end %>
+</ul>

@@ -10,14 +10,14 @@ class User < ApplicationRecord
   has_many :favorites, foreign_key: :user_1_id
   has_many :favorite_users, through: :favorites, source: :user_2
   has_one_attached :photo, dependent: :destroy
-  has_many :chatrooms_as_user_1, class_name: "Chatroom", foreign_key: :user_1_id
-  has_many :chatrooms_as_user_2, class_name: "Chatroom", foreign_key: :user_2_id
+  has_many :binomes_as_user_1, class_name: "Binome", foreign_key: :user_1_id
+  has_many :binomes_as_user_2, class_name: "Binome", foreign_key: :user_2_id
 
   def current_experience
     experiences.find_by(is_current: true)
   end
 
-  def chatrooms
-    Chatroom.where('user_1_id = :user_id OR user_2_id = :user_id', user_id: id)
+  def binomes
+    Binome.where('user_1_id = :user_id OR user_2_id = :user_id', user_id: id)
   end
 end

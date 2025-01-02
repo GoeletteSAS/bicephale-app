@@ -5,7 +5,7 @@
       <div class="matching-profiles">
         <% @matching_users.each do |matching_user| %>
           <% @user = matching_user %>
-          <%= render "chatrooms/new_chatroom_modal", user: @user %>
+          <%= render "binomes/new_binome_modal", user: @user %>
           <div class="profile-card">
             <div class="content-profile">
               <div class="profile-subcard">
@@ -21,7 +21,7 @@
                     <% end %>
                     <button type="button"
                     data-bs-toggle="modal"
-                    data-bs-target="#newChatroomModal-<%= @user.id %>">
+                    data-bs-target="#newBinomeModal-<%= @user.id %>">
                       <i class="fa-regular fa-message"></i>
                     </button>
                     <% if current_user.favorites.exists?(user_2_id: @user.id) %>

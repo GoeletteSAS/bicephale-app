@@ -1,0 +1,2 @@
+class CoachingsController < ApplicationController
+end

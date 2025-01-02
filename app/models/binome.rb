@@ -1,9 +1,10 @@
-class Chatroom < ApplicationRecord
+class Binome < ApplicationRecord
   belongs_to :user_1, class_name: "User", foreign_key: :user_1_id
   belongs_to :user_2, class_name: "User", foreign_key: :user_2_id
   has_many :messages, dependent: :destroy
+  has_one :workflow
 
-  validates :user_1_id, uniqueness: { scope: :user_2_id, message: "Chatroom already exists between these users" }
+  validates :user_1_id, uniqueness: { scope: :user_2_id, message: "Binome already exists between these users" }
 
   def participants
     [user_1, user_2]
