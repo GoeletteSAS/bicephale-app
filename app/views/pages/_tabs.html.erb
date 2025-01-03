@@ -16,10 +16,13 @@
         <%= link_to "Mes profils favoris", dashboard_favorites_path, class: "nav-link #{'active' if action_name == 'dashboard_favorites'}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Messages (#{@number})", dashboard_chatrooms_path, class: "nav-link #{'active' if action_name == 'dashboard_chatrooms'}" %>
+        <%= link_to "Messages (#{@number})", dashboard_binomes_path, class: "nav-link #{'active' if action_name == 'dashboard_binomes'}" %>
       </li>
       <li class="nav-item">
         <%= link_to "Mon profil", dashboard_profile_path, class: "nav-link #{'active' if action_name == 'dashboard_profile'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Espace de travail", dashboard_workflows_path, class: "nav-link #{'active' if action_name == 'index' && controller_name == 'workflows'}" %>
       </li>
     </ul>
 

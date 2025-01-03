@@ -1,7 +1,7 @@
 class MessagesController < ApplicationController
   def create
-    @chatroom = Chatroom.find(params[:chatroom_id])
-    @message = @chatroom.messages.new(message_params.merge(user_id: current_user.id))
+    @binome = Binome.find(params[:binome_id])
+    @message = @binome.messages.new(message_params.merge(user_id: current_user.id))
     # merge ensures the sender is the current user
     # the method merge is used to add a key-value pairs in the message_params hash.
     puts "current_user : #{current_user.first_name}"
@@ -14,10 +14,11 @@ class MessagesController < ApplicationController
             locals: { message: @message, user: current_user })
         end
         self.message_mail_notification
-        format.html { redirect_to chatroom_path(@chatroom), notice: "email de confirmation envoyé !" }
+        format.html { redirect_to chatroom_path(@binome), notice: "email de confirmation envoyé !" }
+
       end
     else
-      render "chatrooms/show", status: :unprocessable_entity
+      render "binomes/show", status: :unprocessable_entity
     end
   end
 

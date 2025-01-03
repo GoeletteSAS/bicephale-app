@@ -18,16 +18,18 @@ Rails.application.routes.draw do
   end
   resources :favorites, only: [:create, :destroy]
 
-  resources :chatrooms, only: [:new, :show, :create] do
+  resources :workflows, only: [:show, :index]
+
+  resources :binomes, only: [:new, :show, :create] do
     resources :messages, only: [:create]
   end
 
   get '/dashboard_searches', to: 'pages#dashboard_searches', as: :dashboard_searches
   get '/dashboard_favorites', to: 'pages#dashboard_favorites', as: :dashboard_favorites
   get '/dashboard_profile', to: 'pages#dashboard_profile', as: :dashboard_profile
-  get '/dashboard_chatrooms', to: 'pages#dashboard_chatrooms', as: :dashboard_chatrooms
-  get '/dashboard_chatrooms_unread', to: 'pages#dashboard_chatrooms_unread', as: :dashboard_chatrooms_unread
+  get '/dashboard_binomes', to: 'pages#dashboard_binomes', as: :dashboard_binomes
+  get '/dashboard_binomes_unread', to: 'pages#dashboard_binomes_unread', as: :dashboard_binomes_unread
   post '/dashboard_searches/:search_id/details/:user_id', to: 'searches#details', as: :search_details
-
+  get '/dashboard_workflows', to: 'pages#dashboard_workflows', as: :dashboard_workflows
   # Defines the root path route ("/")
 end

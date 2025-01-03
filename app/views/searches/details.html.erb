@@ -16,7 +16,7 @@
       <div class="boutons-icons">
         <button type="button"
             data-bs-toggle="modal"
-            data-bs-target="#newChatroomModal-<%= @user.id %>">
+            data-bs-target="#newBinomeModal-<%= @user.id %>">
           <i class="fa-regular fa-message"></i>
         </button>
         <% if current_user.favorites.exists?(user_2_id: @user.id) %>
