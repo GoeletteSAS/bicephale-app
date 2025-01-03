@@ -1,0 +1,8 @@
+<h1>Mes Workflows</h1>
+
+<% @workflows.each do |workflow| %>
+  <div class="workflow">
+    <h3>Workflow pour Binôme : <%= workflow.create_workspace ? 'Espace de travail créé' : 'En attente de création' %></h3>
+    <p><%= workflow.first_quizz_done ? 'Premier quiz terminé' : 'Premier quiz non terminé' %></p>
+  </div>
+<% end %>

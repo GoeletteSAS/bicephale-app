@@ -1,38 +1,32 @@
-<%= turbo_frame_tag "preview" do %>
-  <% if @matching_users.any? %>
-    <div class="matching-profiles-with-title">
-      <div><h2>Ces profils peuvent vous intéresser</h2></div>
-      <div class="matching-profiles">
-        <% @matching_users.each do |matching_user| %>
-          <% @user = matching_user %>
-          <%= render "binomes/new_binome_modal", user: @user %>
+<div class="dashboard-container">
+  <div><%= render "tabs" %></div>
+
+  <% if @workflows.any? %>
+    <div class="matching-profiles">
+      <% @workflows.each do |workflow| %>
+        <% @binome_user = workflow.binome.user %>
           <div class="profile-card">
             <div class="content-profile">
               <div class="profile-subcard">
                 <div class="profile-info">
-                  <% if @user.photo.attached? %>
-                    <%= cl_image_tag @user.photo.key, crop: :fill, class: "img-fluid avatar" %>
+                  <% if work.photo.attached? %>
+                    <%= cl_image_tag @favorite_user.photo.key, crop: :fill, class: "avatar" %>
                   <% else %>
                     <%= image_tag "default-user.svg", crop: :fill, alt: "default-profile-photo"%>
                   <% end %>
                   <div class="profile-icons-box">
-                    <%= link_to search_details_path(@search, @user), data: { turbo_method: :post } do %>
-                      <i class="fa-solid fa-ellipsis"></i>
-                    <% end %>
-                    <button type="button"
-                    data-bs-toggle="modal"
-                    data-bs-target="#newBinomeModal-<%= @user.id %>">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#newBinomeModal">
                       <i class="fa-regular fa-message"></i>
                     </button>
-                    <% if current_user.favorites.exists?(user_2_id: @user.id) %>
+                    <% if current_user.favorites.exists?(user_2_id: @favorite_user.id) %>
                       <!-- Si l'utilisateur a déjà favorisé ce profil, on affiche l'étoile pleine -->
-                      <%= button_to favorites_path(user_2_id: @user.id), method: :post, data: {turbo: false} do %>
+                      <%= button_to favorites_path(user_2_id: @favorite_user.id), method: :post, data: {turbo: false} do %>
                       <i class="fa-solid fa-star text-warning"></i>
                       <!-- L'étoile pleine si déjà favori -->
                       <% end %>
                     <% else %>
                       <!-- Si l'utilisateur n'a pas encore favorisé ce profil, on affiche l'étoile vide -->
-                      <%= button_to favorites_path(user_2_id: @user.id), method: :post, data: {turbo: false} do%>
+                      <%= button_to favorites_path(user_2_id: @favorite_user.id), method: :post, data: {turbo: false} do%>
                       <i class="fa-regular fa-star"></i>
                       <!-- L'étoile vide si non favori -->
                       <% end %>
@@ -40,25 +34,25 @@
                   </div>
                 </div>
                 <div class="name-and-mail">
-                  <h3 class="profile-name"><%= @user.first_name %> <%= @user.last_name %></h3>
+                  <h3 class="profile-name"><%= @favorite_user.first_name %> <%= @favorite_user.last_name %></h3>
                   <div class="mail-and-pic">
                     <div>
                       <i class="fas fa-envelope"></i>
                     </div>
                     <div>
                       <p class="profile-email">
-                      <% if @user.email.length > 20 %>
+                      <% if @favorite_user.email.length > 20 %>
                         <% regex_after_arobase = /@.*$/%>
-                        <% if @user.email.match(regex_after_arobase)[0].length > 12%>
+                        <% if @favorite_user.email.match(regex_after_arobase)[0].length > 12%>
                           <% regex_twelve_letters = /.{15}/%>
-                          <% twelve_letters = @user.email.match(regex_twelve_letters)[0] %>
+                          <% twelve_letters = @favorite_user.email.match(regex_twelve_letters)[0] %>
                           <%= twelve_letters%>...
                         <% else%>
                           <%first_letter_email = /^./%>
-                          <%= @user.email.match(first_letter_email)[0]%>...<%=@user.email.match(regex_after_arobase)[0] %>
+                          <%= @favorite_user.email.match(first_letter_email)[0]%>...<%=@favorite_user.email.match(regex_after_arobase)[0] %>
                         <% end %>
                       <% else%>
-                        <%= @user.email%>
+                        <%= @favorite_user.email%>
                       <% end%>
                       </p>
                     </div>
@@ -67,22 +61,21 @@
               </div>
               <div class="separator"></div>
               <div class="profile-experiences">
-
-
-                  <div class="experience-section">
-                    <div class="experience-item">
-                      <p><%= @user.description %></p>
-                    </div>
-                  </div>
-
+                <div>
+                  <p><strong><%= @favorite_user.experiences.last.postname %> chez <%= @favorite_user.experiences.last.firm %></strong></p>
+                  <p><em>" <%= @favorite_user.description %> "</em></p>
+                </div>
               </div>
             </div>
           </div>
-        <% end %>
-      </div>
-    </div>
-  <% else %>
-    <p class="no-results">Aucun profil correspondant trouvé</p>
-  <% end %>
 
-<% end %>
+
+
+
+
+      <% end %>
+    </div>
+<% else %>
+    <p class="no-results">Pas de profils sauvegardés pour le moment</p>
+  <% end %>
+</div>

@@ -1,22 +1,22 @@
 <div class="modal fade"
-     id="newChatroomModal-<%= @user.id %>"
+     id="newBinomeModal-<%= @user.id %>"
      tabindex="-1"
-     aria-labelledby="newChatroomModal-<%= @user.id %>Label"
+     aria-labelledby="newBinomeModal-<%= @user.id %>Label"
      aria-hidden="true">
      <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-  <h5 class="modal-title" id="newChatroomModal-<%= @user.id %>Label">Message</h5>
+  <h5 class="modal-title" id="newBinomeModal-<%= @user.id %>Label">Message</h5>
   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 </div>
 
-<% @chatroom = Chatroom.find_by(user_1: current_user, user_2: @user) || Chatroom.new %>
+<% @binome = Binome.find_by(user_1: current_user, user_2: @user) || Binome.new %>
 
 <%= form_with(
-      model: @chatroom,
-      url: chatrooms_path,
+      model: @binome,
+      url: binomes_path,
       local: true,
-      data: { controller: "chatroom", turbo: false },
+      data: { controller: "binome", turbo: false },
       method: :post
     ) do |f| %>
   <div class="modal-body">

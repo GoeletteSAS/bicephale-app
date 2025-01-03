@@ -2,7 +2,7 @@ require 'faker'
 require 'open-uri'
 
 puts 'Cleaning database...'
-Chatroom.destroy_all
+Binome.destroy_all
 Favorite.destroy_all
 Search.destroy_all
 Experience.destroy_all

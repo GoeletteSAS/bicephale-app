@@ -1,14 +1,14 @@
-<%= turbo_frame_tag "chatroom_content" do %>
+<%= turbo_frame_tag "binome_content" do %>
   <div class="chat">
-    <%= turbo_stream_from [@chatroom, current_user, "messages"] %>
+    <%= turbo_stream_from [@binome, current_user, "messages"] %>
     <div id="messages" class="messages">
-      <% @chatroom.messages.each do |message| %>
+      <% @binome.messages.each do |message| %>
         <%= render "messages/message", message: message, user: current_user %>
       <% end %>
     </div>
 
     <div class="message-form bg-white sticky-bottom">
-      <%= simple_form_for [@chatroom, @message],
+      <%= simple_form_for [@binome, @message],
           html: {class: "d-flex w-100"},
           data: { turbo_stream: true,
                  controller: "reset-form",
