@@ -18,6 +18,29 @@ Rails.application.configure do
   config.consider_all_requests_local = false
   config.action_controller.perform_caching = true
 
+  config.action_mailer.raise_delivery_errors = true
+
+  config.action_mailer.default_url_options = { host: 'www.jardinfrancais.online', protocol: 'https' }
+  config.action_mailer.default_options = { from: 'no-reply@jardinfrancais.online' }
+
+  # SMTP settings 01/01/2025
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address:         'mail1.netim.hosting',
+    port:            465,
+    domain:          'jardinfrancais.online',
+    user_name:       'no-reply@jardinfrancais.online',
+    password:        ENV['PASSWORD_NO_REPLY'],
+    authentication:  'plain',
+    ssl: true,
+    enable_starttls_auto: false,
+    open_timeout:    5,
+    read_timeout:    5
+  }
+  #########################
+
+
   # Ensures that a master key has been made available in ENV["RAILS_MASTER_KEY"], config/master.key, or an environment
   # key such as config/credentials/production.key. This key is used to decrypt credentials (and other encrypted files).
   # config.require_master_key = true
