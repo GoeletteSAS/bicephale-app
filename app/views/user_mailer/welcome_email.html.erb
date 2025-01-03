@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bienvenue sur bicephale, <%= @user.first_name %></h1>
+    <p>
+      Votre compte a bien été crééa avec l'identifiant <%= @user.email %>.<br>
+      Pour l'activer et trouver votre binôme, cliquez sur le lien suivant
+    </p>
+    <p>Une fois votre compte activé, cliquez <%= link_to 'ici', @url %> pour vous connecter.</p>
+    <p>A bientôt !</p>
+    <p>L'équipe Bicéphale</p>
+  </body>
+</html>

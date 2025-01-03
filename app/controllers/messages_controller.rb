@@ -13,11 +13,17 @@ class MessagesController < ApplicationController
             target: "messages",
             locals: { message: @message, user: current_user })
         end
-        format.html { redirect_to chatroom_path(@chatroom) }
+        self.message_mail_notification
+        format.html { redirect_to chatroom_path(@chatroom), notice: "email de confirmation envoyé !" }
       end
     else
       render "chatrooms/show", status: :unprocessable_entity
     end
+  end
+
+  def message_mail_notification
+    @user = current_user
+    UserMailer.with(user: @user).welcome_email(@user).deliver_later
   end
 
   private
