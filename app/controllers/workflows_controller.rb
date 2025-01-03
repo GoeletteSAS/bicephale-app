@@ -5,7 +5,7 @@ before_action :set_user
 
 def index
   # Récupère tous les workflows associés à l'utilisateur via ses binômes
-  @workflows = @user.binomes.map(&:workflow)
+    @workflows = @user.workflows
 end
 
   def show

@@ -22,7 +22,7 @@
         <%= link_to "Mon profil", dashboard_profile_path, class: "nav-link #{'active' if action_name == 'dashboard_profile'}" %>
       </li>
       <li class="nav-item">
-        <%= link_to "Espace de travail", workflows_path, class: "nav-link #{'active' if action_name == 'index' && controller_name == 'workflows'}" %>
+        <%= link_to "Espace de travail", dashboard_workflows_path, class: "nav-link #{'active' if action_name == 'index' && controller_name == 'workflows'}" %>
       </li>
     </ul>
 

@@ -20,4 +20,8 @@ class User < ApplicationRecord
   def binomes
     Binome.where('user_1_id = :user_id OR user_2_id = :user_id', user_id: id)
   end
+
+  def workflows
+    Workflow.joins(:binome).where('binomes.user_1_id = :user_id OR binomes.user_2_id = :user_id', user_id: id)
+  end
 end

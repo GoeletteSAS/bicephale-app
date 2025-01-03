@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_01_02_152037) do
+ActiveRecord::Schema[7.1].define(version: 2025_01_03_152856) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -47,10 +47,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_02_152037) do
     t.bigint "user_2_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "workflow_id"
     t.index ["user_1_id"], name: "index_binomes_on_user_1_id"
     t.index ["user_2_id"], name: "index_binomes_on_user_2_id"
-    t.index ["workflow_id"], name: "index_binomes_on_workflow_id"
   end
 
   create_table "coachings", force: :cascade do |t|
@@ -156,14 +154,16 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_02_152037) do
     t.boolean "third_quizz_done"
     t.boolean "real_meeting_done"
     t.boolean "company_validation"
-    t.bigint "first_coaching_id"
+    t.integer "first_coaching_id"
     t.boolean "first_coaching_done"
     t.boolean "contract_prepared"
-    t.bigint "first_month_coaching_id"
-    t.bigint "second_month_coaching_id"
-    t.bigint "third_month_coaching_id"
+    t.integer "first_month_coaching_id"
+    t.integer "second_month_coaching_id"
+    t.integer "third_month_coaching_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "binome_id"
+    t.index ["binome_id"], name: "index_workflows_on_binome_id"
     t.index ["first_coaching_id"], name: "index_workflows_on_first_coaching_id"
     t.index ["first_month_coaching_id"], name: "index_workflows_on_first_month_coaching_id"
     t.index ["second_month_coaching_id"], name: "index_workflows_on_second_month_coaching_id"
@@ -174,7 +174,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_02_152037) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "binomes", "users", column: "user_1_id"
   add_foreign_key "binomes", "users", column: "user_2_id"
-  add_foreign_key "binomes", "workflows"
   add_foreign_key "experiences", "users"
   add_foreign_key "favorites", "users", column: "user_1_id"
   add_foreign_key "favorites", "users", column: "user_2_id"
@@ -182,6 +181,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_01_02_152037) do
   add_foreign_key "messages", "users"
   add_foreign_key "searches", "experiences"
   add_foreign_key "searches", "users"
+  add_foreign_key "workflows", "binomes"
   add_foreign_key "workflows", "coachings", column: "first_coaching_id"
   add_foreign_key "workflows", "coachings", column: "first_month_coaching_id"
   add_foreign_key "workflows", "coachings", column: "second_month_coaching_id"

@@ -42,4 +42,10 @@ class PagesController < ApplicationController
   def dashboard_binomes_unread
     notifications_messages()
   end
+
+  def dashboard_workflows
+    @user = current_user
+    @workflows = @user.workflows
+  end
+
 end

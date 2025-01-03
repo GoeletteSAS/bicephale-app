@@ -30,6 +30,6 @@ Rails.application.routes.draw do
   get '/dashboard_binomes', to: 'pages#dashboard_binomes', as: :dashboard_binomes
   get '/dashboard_binomes_unread', to: 'pages#dashboard_binomes_unread', as: :dashboard_binomes_unread
   post '/dashboard_searches/:search_id/details/:user_id', to: 'searches#details', as: :search_details
-
+  get '/dashboard_workflows', to: 'pages#dashboard_workflows', as: :dashboard_workflows
   # Defines the root path route ("/")
 end
